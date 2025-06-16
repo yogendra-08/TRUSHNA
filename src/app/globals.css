@@ -1,0 +1,399 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    /* Light Theme (default, to be overridden by .light) */
+    --background: 0 0% 96%; /* #f5f5f5 */
+    --foreground: 0 0% 20%; /* #333333 */
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 28% 45%;
+
+    --popover: 0 0% 96%;
+    --popover-foreground: 0 0% 20%;
+
+    --card: 0 0% 96%;
+    --card-foreground: 0 0% 20%;
+
+    --border: 215 20% 85%; /* Lighter border for light theme */
+    --input: 215 20% 85%;
+
+    --primary: 211 100% 50%; /* #007bff */
+    --primary-foreground: 0 0% 100%; /* White */
+    --primary-glow: 211 100% 60%;
+
+    --secondary: 210 40% 92%;
+    --secondary-foreground: 0 0% 20%;
+
+    --accent: 211 100% 50%; /* #007bff - Can be same as primary or a different shade */
+    --accent-foreground: 0 0% 100%;
+    --accent-glow: 211 100% 60%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 211 100% 50%;
+    --radius: 0.5rem;
+
+    /* Chart colors for light theme */
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .light {
+    --background: 0 0% 96%; /* #f5f5f5 */
+    --foreground: 0 0% 20%; /* #333333 */
+
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 40%;
+
+    --popover: 0 0% 100%; /* White popover */
+    --popover-foreground: 0 0% 20%;
+
+    --card: 0 0% 100%; /* White card */
+    --card-foreground: 0 0% 20%;
+
+    --border: 0 0% 87%; /* Slightly darker border for white elements */
+    --input: 0 0% 87%;
+
+    --primary: 211 100% 50%; /* #007bff */
+    --primary-foreground: 0 0% 100%; /* White text on primary */
+    --primary-glow: 211 100% 60%;
+
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 20%;
+
+    --accent: 200 100% 50%; /* A slightly different blue for accent if needed */
+    --accent-foreground: 0 0% 100%;
+    --accent-glow: 200 100% 60%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --ring: 211 100% 50%;
+  }
+
+  .dark {
+    --background: 0 0% 7%; /* #121212 */
+    --foreground: 0 0% 94%; /* #f0f0f0 */
+
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 65%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 94%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 94%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+
+    --primary: 187 100% 42%; /* #00bcd4 */
+    --primary-foreground: 0 0% 5%; /* Dark text on cyan buttons */
+    --primary-glow: 187 100% 50%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 94%;
+
+    --accent: 190 100% 50%; /* Slightly different cyan/blue for accent */
+    --accent-foreground: 0 0% 5%;
+    --accent-glow: 190 100% 55%;
+
+    --destructive: 0 63% 40%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 187 100% 42%;
+    
+    /* Chart colors for dark theme */
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+  
+  .cyberpunk {
+    --background: 220 20% 5%; /* Very Dark Blue/Almost Black */
+    --foreground: 180 100% 85%; /* Bright Cyan Text */
+
+    --muted: 220 15% 15%; 
+    --muted-foreground: 180 80% 70%;
+
+    --popover: 220 20% 8%; /* Dark blue tinted */
+    --popover-foreground: 180 100% 90%;
+
+    --card: 220 20% 8%; 
+    --card-foreground: 180 100% 90%;
+
+    --border: 180 100% 50%; /* Electric Blue (changed to match primary) */
+    --input: 220 15% 12%; 
+
+    --primary: 180 100% 50%; /* Electric Blue - Using 180deg for a more cyan/turquoise */
+    --primary-foreground: 180 100% 95%; /* Very Light Blue/White text on primary */
+    --primary-glow: 180 100% 65%; 
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 180 100% 85%;
+
+    --accent: 195 80% 45%; /* Deep Teal/Cyan (changed for professionalism) */
+    --accent-foreground: 195 80% 95%; /* Very Light Teal/White text on accent */
+    --accent-glow: 195 80% 55%; 
+    
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 180 100% 50%; /* Electric Blue for focus rings */
+
+    /* Chart colors for cyberpunk theme (professional blues and teals) */
+    --chart-1: 180 100% 50%; /* Electric Blue / Cyan */
+    --chart-2: 195 80% 45%;  /* Deep Teal / Cyan */
+    --chart-3: 210 70% 40%;  /* Medium Professional Blue */
+    --chart-4: 220 60% 60%;  /* Lighter Professional Blue */
+    --chart-5: 170 50% 35%;  /* Darker Muted Teal */
+  }
+
+  .glassmorphism {
+    --background: 220 30% 12%; /* Dark blueish base for page behind blurred elements */
+    --foreground: 210 50% 95%; /* Light text */
+
+    /* For card/popover backgrounds with backdrop-filter */
+    --card-bg-h: 220; --card-bg-s: 15%; --card-bg-l: 25%; --card-bg-a: 0.15; /* Slightly darker glass base */
+    --popover-bg-h: 220; --popover-bg-s: 15%; --popover-bg-l: 25%; --popover-bg-a: 0.15;
+    
+    --card-foreground: 210 40% 90%;
+    --popover-foreground: 210 40% 90%;
+
+    --muted: 220 20% 20%;
+    --muted-foreground: 210 30% 70%;
+    
+    --border: 220 15% 70%; /* Used for non-blurred borders if any, or input */
+    --input: 220 15% 25%; 
+    /* Special border for blurred elements */
+    --glass-border-color: 220, 15%, 80%; /* H,S,L for hsla() */
+    --glass-border-alpha: 0.2;
+
+
+    --primary: 220 70% 55%; /* Sophisticated Medium-Dark Blue */
+    --primary-foreground: 220 70% 95%; /* Light text on primary buttons */
+    --primary-glow: 220 70% 65%;
+
+    --secondary: 220 25% 20%;
+    --secondary-foreground: 210 40% 90%;
+
+    --accent: 200 60% 50%; /* Complementary Blue/Teal */
+    --accent-foreground: 200 60% 95%; /* Light text on accent buttons */
+    --accent-glow: 200 60% 60%;
+    
+    --destructive: 0 80% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 220 70% 55%;
+
+    /* Chart colors for glassmorphism theme */
+    --chart-1: 220 70% 55%; 
+    --chart-2: 200 60% 50%; 
+    --chart-3: 210 65% 60%;
+    --chart-4: 190 55% 45%; 
+    --chart-5: 230 50% 50%; 
+  }
+
+  .solarized {
+    --background: 48 83% 94%; /* #fdf6e3 */
+    --foreground: 200 14% 45%; /* #657b83 */
+
+    --muted: 45 60% 88%;
+    --muted-foreground: 200 10% 40%;
+
+    --popover: 48 70% 90%;
+    --popover-foreground: 200 14% 35%;
+
+    --card: 48 70% 90%;
+    --card-foreground: 200 14% 35%;
+
+    --border: 45 50% 80%;
+    --input: 45 50% 80%;
+
+    --primary: 40 100% 35%; /* Orange #b58900 */
+    --primary-foreground: 48 80% 96%; /* Light text on orange */
+    --primary-glow: 40 100% 45%;
+
+    --secondary: 45 60% 85%;
+    --secondary-foreground: 200 14% 40%;
+
+    --accent: 175 59% 42%; /* Cyan #2aa198 */
+    --accent-foreground: 48 80% 96%; /* Light text on cyan */
+    --accent-glow: 175 59% 52%;
+    
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 40 100% 35%;
+
+    /* Chart colors for solarized theme */
+    --chart-1: 40 100% 40%;  /* Orange */
+    --chart-2: 175 59% 45%;  /* Cyan */
+    --chart-3: 200 30% 50%;  /* Blueish Gray */
+    --chart-4: 15 80% 50%;   /* Reddish */
+    --chart-5: 120 30% 45%;  /* Greenish Gray */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    @apply transition-colors duration-300;
+  }
+
+  .glow-primary-text {
+    @apply text-primary drop-shadow-[0_0_8px_hsl(var(--primary-glow))];
+  }
+  .glow-accent-text {
+    @apply text-accent drop-shadow-[0_0_8px_hsl(var(--accent-glow))];
+  }
+  .glow-primary-box {
+    @apply shadow-[0_0_12px_hsl(var(--primary-glow)),inset_0_0_8px_hsl(var(--primary-glow))];
+  }
+  .glow-accent-box {
+     @apply shadow-[0_0_12px_hsl(var(--accent-glow)),inset_0_0_8px_hsl(var(--accent-glow))];
+  }
+
+  .cyberpunk .cyber-border { /* specific to cyberpunk theme */
+    @apply border-2 border-primary shadow-[0_0_5px_hsl(var(--primary-glow))]; 
+  }
+  .glassmorphism .glass-ui-element { /* specific to glassmorphism theme */
+    background-color: hsla(var(--card-bg-h), var(--card-bg-s), var(--card-bg-l), var(--card-bg-a));
+    @apply backdrop-blur-md shadow-xl;
+    border: 1px solid hsla(var(--glass-border-color), var(--glass-border-alpha));
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-scale {
+    animation: fadeInScale 0.5s ease-out forwards;
+  }
+  .animate-fade-in-subtle {
+    animation: fadeInSubtle 1s ease-out 0.3s forwards; /* Delay this a bit */
+    opacity: 0; /* Start hidden for animation */
+  }
+   .animate-pulse-text-glow {
+    animation: pulseTextGlow 2.5s infinite ease-in-out;
+  }
+
+  .futuristic-cyber-bg {
+    --futuristic-bg-start: hsl(220, 30%, 8%); 
+    --futuristic-bg-end: hsl(200, 40%, 5%);   
+    --futuristic-glow-color: hsl(var(--primary)); 
+    --futuristic-circuit-color: hsla(var(--accent), 0.5); 
+    --futuristic-particle-color: hsla(var(--primary), 0.3);
+    --futuristic-grid-color: hsla(var(--accent), 0.08);
+
+    background-color: var(--futuristic-bg-end);
+    background-image:
+      linear-gradient(160deg, var(--futuristic-bg-start) 0%, var(--futuristic-bg-end) 75%),
+      repeating-linear-gradient(45deg, transparent, transparent 24px, var(--futuristic-grid-color) 25px, transparent 26px),
+      repeating-linear-gradient(-45deg, transparent, transparent 24px, var(--futuristic-grid-color) 25px, transparent 26px);
+    background-size: 100% 100%, 50px 50px, 50px 50px; 
+    position: relative;
+    overflow: hidden; 
+    animation: futuristicBgPan 80s linear infinite alternate; 
+  }
+
+  .futuristic-cyber-bg::before,
+  .futuristic-cyber-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%; 
+    height: 100%;
+    pointer-events: none; 
+  }
+
+  .futuristic-cyber-bg::before {
+    background-image:
+      repeating-linear-gradient(80deg, transparent, transparent 2px, var(--futuristic-circuit-color) 2.5px, var(--futuristic-circuit-color) 3.5px, transparent 4px, transparent 70px),
+      repeating-linear-gradient(20deg, transparent, transparent 1px, var(--futuristic-circuit-color) 1.5px, var(--futuristic-circuit-color) 2px, transparent 2.5px, transparent 80px),
+      repeating-linear-gradient(90deg, transparent, transparent 0.3px, var(--futuristic-particle-color) 0.6px, var(--futuristic-particle-color) 0.9px, transparent 1.2px, transparent 30px);
+    background-size: 250px 250px, 300px 300px, 120px 120px;
+    opacity: 0.4;
+    animation: futuristicCircuitsMove 25s linear infinite;
+  }
+
+  .futuristic-cyber-bg::after {
+    background-image:
+      radial-gradient(circle at 15% 25%, var(--futuristic-glow-color) 0%, transparent 8%),
+      radial-gradient(circle at 85% 75%, var(--futuristic-glow-color) 0%, transparent 12%),
+      radial-gradient(circle at 50% 50%, hsla(var(--futuristic-glow-color), 0.05) 0%, transparent 25%);
+    background-size: 500px 500px, 600px 600px, 700px 700px;
+    background-position: 0% 0%, 100% 100%, 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0.0; 
+    animation: futuristicHudGlow 18s ease-in-out infinite alternate;
+  }
+
+  .glassmorphism-page-bg {
+    background-color: hsl(210, 30%, 10%); 
+    background-image:
+      radial-gradient(ellipse at 15% 20%, hsla(200, 50%, 80%, 0.08) 0%, transparent 60%),
+      radial-gradient(ellipse at 85% 80%, hsla(230, 30%, 5%, 0.1) 0%, transparent 50%),
+      linear-gradient(135deg, hsl(230, 25%, 18%), hsl(210, 30%, 10%));
+    min-height: 100vh;
+    background-blend-mode: normal; 
+  }
+
+  .frosted-glass {
+      background-color: hsla(var(--card-bg-h, 220), var(--card-bg-s, 15%), var(--card-bg-l, 25%), var(--card-bg-a, 0.15));
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px); 
+      border: 1px solid hsla(var(--glass-border-color, 220, 15%, 70%), var(--glass-border-alpha, 0.2));
+      @apply shadow-xl rounded-lg;
+  }
+}
+
+@keyframes futuristicBgPan {
+  0% { background-position: 0% 0%, 0 0, 0 0; }
+  100% { background-position: 100% 100%, 50px 50px, -50px -50px; }
+}
+
+@keyframes futuristicCircuitsMove {
+  0% { transform: translateX(0) translateY(0) rotate(0deg); }
+  25% { transform: translateX(-10px) translateY(5px) rotate(0.5deg); }
+  50% { transform: translateX(-25px) translateY(0px) rotate(0deg); }
+  75% { transform: translateX(-10px) translateY(-5px) rotate(-0.5deg); }
+  100% { transform: translateX(0) translateY(0) rotate(0deg); }
+}
+
+@keyframes futuristicHudGlow {
+  0% { opacity: 0.1; transform: scale(0.9) rotate(-3deg); }
+  50% { opacity: 0.3; transform: scale(1.1) rotate(3deg); }
+  100% { opacity: 0.1; transform: scale(0.9) rotate(-3deg); }
+}
+
+@keyframes fadeInScale {
+  0% { opacity: 0; transform: scale(0.92); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInSubtle {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseTextGlow {
+  0%, 100% { text-shadow: 0 0 6px hsl(var(--primary-glow)), 0 0 8px hsl(var(--primary-glow)/0.6); }
+  50% { text-shadow: 0 0 10px hsl(var(--primary-glow)), 0 0 16px hsl(var(--primary-glow)/0.6); }
+}
