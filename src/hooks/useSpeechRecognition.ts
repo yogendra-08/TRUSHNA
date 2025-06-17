@@ -1,8 +1,53 @@
-
 // src/hooks/useSpeechRecognition.ts
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from 'react';
+
+// Add type declarations for SpeechRecognition
+interface SpeechRecognitionEvent extends Event {
+  resultIndex: number;
+  results: SpeechRecognitionResultList;
+}
+
+interface SpeechRecognitionErrorEvent extends Event {
+  error: string;
+  message: string;
+}
+
+interface SpeechRecognitionResultList {
+  length: number;
+  item(index: number): SpeechRecognitionResult;
+  [index: number]: SpeechRecognitionResult;
+}
+
+interface SpeechRecognitionResult {
+  isFinal: boolean;
+  [index: number]: SpeechRecognitionAlternative;
+}
+
+interface SpeechRecognitionAlternative {
+  transcript: string;
+  confidence: number;
+}
+
+interface SpeechRecognition extends EventTarget {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  onresult: ((event: SpeechRecognitionEvent) => void) | null;
+  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+  onend: (() => void) | null;
+  start(): void;
+  stop(): void;
+  abort(): void;
+}
+
+declare global {
+  interface Window {
+    SpeechRecognition: new () => SpeechRecognition;
+    webkitSpeechRecognition: new () => SpeechRecognition;
+  }
+}
 
 interface SpeechRecognitionOptions {
   onResult?: (transcript: string) => void;
@@ -108,7 +153,7 @@ export function useSpeechRecognition(options?: SpeechRecognitionOptions) {
     }
     options?.onResult?.(textForUiUpdate);
 
-    const finalText = finalTranscriptPart.trim().toLowerCase();
+    const finalText = finalTranscriptPart.trim().toLowerCase().replace(/\s+/g, ' ');
     if (!finalText) return;
 
     if (commandTimeoutRef.current) {
@@ -119,7 +164,15 @@ export function useSpeechRecognition(options?: SpeechRecognitionOptions) {
     const processFinalCommand = (command: string) => {
         if (!isListeningRef.current) return; 
 
-        options?.onCommand?.(command);
+        // Clean up the command for better matching
+        const cleanedCommand = command
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, ' ')  // Replace multiple spaces with single space
+            .replace(/[.,]/g, '')  // Remove periods and commas
+            .replace(/\s+$/g, ''); // Remove trailing spaces
+
+        options?.onCommand?.(cleanedCommand);
         stopListening(); 
     };
 

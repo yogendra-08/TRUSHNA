@@ -1,4 +1,3 @@
-
 // src/lib/commandParser.ts
 
 export interface ParsedCommand {
@@ -37,22 +36,22 @@ const greetingRegex = /^(hi|hello|hey|greetings|good morning|good afternoon|good
 const farewellRegex = /^(bye|goodbye|see you|later|farewell)(?: trushna)?/i;
 const timeRegex = /(?:what(?:'s|s| is)?(?: the)?|tell me the|current|wats the)\s*time(?: now)?/i;
 const dateRegex = /(?:what(?:'s|s| is)? (?:the )?(?:current )?(date|day)|today(?:'s|s)?\s*date)/i;
-const openYouTubeRegex = /^open youtube(?:\\.)?$/i;
+const openYouTubeRegex = /^open\s+youtube(?:\\.)?$/i;
 const playSongYouTubeRegex = /^(play|stream)\s+(?:song\s+)?(.+?)(?:\s+on\s+youtube)?$/i;
 const searchYouTubeRegex = /^search\s+(.+?)\s+on\s+youtube$/i;
 const browserSearchRegex = /^(search|find)(?:\s+(?:for|about))?\s+(.+?)(?:\s+on\s+(?:browser|google|web))?$/i;
-const openGmailRegex = /^open gmail(?:\\.)?$/i;
-const openGoogleRegex = /^open google(?:\\.)?$/i;
-const openChatGptRegex = /^open chatgpt(?:\\.)?$/i;
-const openBraveRegex = /^open brave(?:(?: search)?\\.)?$/i;
+const openGmailRegex = /^open\s+gmail(?:\\.)?$/i;
+const openGoogleRegex = /^open\s+google(?:\\.)?$/i;
+const openChatGptRegex = /^open\s+chatgpt(?:\\.)?$/i;
+const openBraveRegex = /^open\s+brave(?:(?:\s+search)?\\.)?$/i;
 const generateImageRegex = /^(generate|create|draw|make|build|imagine|visualize|img)\s+(?:an?\s+)?(?:image|picture|photo|drawing|illustration|img)\s*(?:(?:of|about|showing|depicting)\s+)?(.+)/i;
-const openInstagramRegex = /^open instagram(?:\\.)?$/i;
-const openSnapchatRegex = /^open snapchat(?:\\.)?$/i;
-const openEmailRegex = /^open (?:my )?email(?: client| app)?(?:\\.)?$/i;
+const openInstagramRegex = /^open\s+instagram(?:\\.)?$/i;
+const openSnapchatRegex = /^open\s+snapchat(?:\\.)?$/i;
+const openEmailRegex = /^open\s+(?:my\s+)?email(?:\s+(?:client|app))?(?:\\.)?$/i;
 
 
 export function parseCommand(command: string): ParsedCommand {
-  const lowerCommand = command.toLowerCase().trim();
+  const lowerCommand = command.toLowerCase().trim().replace(/\s+/g, ' ');
 
   let match = lowerCommand.match(generateImageRegex);
   if (match) {
