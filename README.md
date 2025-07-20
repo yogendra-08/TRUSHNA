@@ -33,8 +33,9 @@ Welcome to **Trushna AI Assistant** – your intelligent, Next.js-powered assist
 ---
 
 ## 👩‍💻 Authors
-- **Yogendra Bhange**
 - **Trushna Bankar**
+- **Yogendra Bhange**
+
 
 ---
 
@@ -43,4 +44,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-> Made with ❤️ by Yogendra Bhange & Trushna Bankar
+> Made by Trushna Bankar & Yogendra Bhange
