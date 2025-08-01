@@ -1,6 +1,6 @@
-# 🚀 Trushna AI Assistant
+# 🚀 AI Assistant
 
-Welcome to **Trushna AI Assistant** – your intelligent, Next.js-powered assistant, designed to help you build, create, and innovate faster!
+Welcome to **AI Assistant** – your intelligent, Next.js-powered assistant, designed to help you build, create, and innovate faster!
 
 ---
 
