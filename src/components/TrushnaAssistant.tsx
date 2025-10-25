@@ -73,7 +73,7 @@ export function TrushnaAssistant({
   const { toast } = useToast();
   const { theme } = useTheme();
 
-  const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const { speak, isSpeaking, voicesReady } = useSpeechSynthesis({
     onEnd: () => console.log("Speech finished"),
@@ -378,10 +378,7 @@ export function TrushnaAssistant({
   };
 
   useEffect(() => {
-    if (scrollAreaRef.current) {
-      const { scrollHeight, clientHeight } = scrollAreaRef.current;
-      scrollAreaRef.current.scrollTop = scrollHeight - clientHeight;
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
   useEffect(() => {
@@ -451,7 +448,7 @@ export function TrushnaAssistant({
 
   return (
     <div className={cn("flex flex-col h-full p-2 md:p-4")}>
-      <ScrollArea className="flex-grow mb-4 pr-2 md:pr-4" ref={scrollAreaRef}>
+      <ScrollArea className="flex-grow mb-4 pr-2 md:pr-4">
         <div className="space-y-6">
           {messages.map((msg) => (
             <div
@@ -534,6 +531,7 @@ export function TrushnaAssistant({
             </div>
           )}
         </div>
+        <div ref={messagesEndRef} />
       </ScrollArea>
       <form onSubmit={handleSubmit} className={cn(
           "flex items-center gap-2 md:gap-4 p-2 rounded-lg border bg-card shadow-xl relative overflow-hidden",

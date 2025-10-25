@@ -107,10 +107,10 @@ export function AboutDialog({ isOpen, onOpenChange }: AboutDialogProps) {
       )}>
         <DialogHeader className="p-6 pb-2">
           <DialogTitle className={cn("text-2xl flex items-center gap-2", theme === "cyberpunk" || theme === "glassmorphism" ? "glow-primary-text" : "")}>
-            <Bot className="w-7 h-7" /> About Trushna Assistant
+            <Bot className="w-7 h-7" /> Trushna
           </DialogTitle>
           <DialogDescription className="text-sm text-muted-foreground pt-1">
-            Trushna is your versatile AI-powered virtual assistant, designed for intuitive interaction, productivity, and a touch of futuristic flair.
+            Trushna is your versatile AI-powered assistant, designed for intuitive interaction, productivity, and a touch of futuristic flair.
           </DialogDescription>
         </DialogHeader>
         
